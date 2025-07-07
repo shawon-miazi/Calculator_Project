@@ -1,0 +1,71 @@
+📘 Management Project Report
+Title: Simple Calculator with History
+Submitted by: Shawon miazi,rubayet,abdullah
+Date: 07-07-2025
+
+🔹 1. Project Overview
+This project is a basic command-line calculator developed in the C programming language. It supports simple arithmetic operations and maintains a history of calculations using file storage.
+
+🔹 2. Objective
+The purpose of this project is to:
+
+Perform basic arithmetic operations: Addition, Subtraction.
+
+Keep a record of past calculations (History).
+
+Practice file handling and user interaction in C.
+
+🔹 3. Features
+Perform:
+
+Addition
+
+Subtraction
+
+Show calculation history.
+
+Exit option.
+
+Simple and user-friendly menu.
+
+🔹 4. Tools and Language
+Programming Language: C
+
+File Used: history.txt to save calculation logs
+
+Compiler: GCC or any standard C compiler
+
+🔹 5. Working Principle
+The program runs in a loop, offering a menu to the user.
+
+User selects an operation and enters two numbers.
+
+The result is displayed and saved in a file along with timestamp.
+
+When "History" is selected, previous results are shown by reading from the file.
+
+🔹 6. Challenges Faced
+Managing file read/write correctly.
+
+Ensuring proper format and handling of time/date.
+
+Validating user input to prevent unexpected behavior.
+
+🔹 7. Conclusion
+This project provided a hands-on understanding of:
+
+File operations (fopen, fprintf, fgets)
+
+Conditional logic and looping structures.
+
+Menu-driven programs in C.
+
+🔹 8. Future Improvements
+Add more operations: Multiplication, Division, Power, etc.
+
+Implement a clear history option.
+
+Add input validation and error handling.
+
+Create a GUI version using C++ or other frameworks.
+
