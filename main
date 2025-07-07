@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <time.h>
+#include <string.h>
+
+int main() {
+    int a, b, type, c;
+
+    while(1) {
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Exit\n");
+        printf("4. History\n");
+        printf("Enter choice: ");
+        scanf("%d", &type);
+
+        if(type == 3) break;
+        else if(type < 1 || type > 4) continue;
+
+        if(type == 4) {
+            FILE *f = fopen("db.txt", "r");
+            if(f == NULL) {
+                time_t now = time(NULL);
+                char *date = ctime(&now);
+                printf("\n****  No Previous History  **** time => %s\n\n", date);
+                continue;
+            }
+
+            char str[200];
+
+            printf("\n****  Addition History  ****\n\n");
+            rewind(f);
+            while(fgets(str, sizeof(str), f) != NULL) {
+                int found = 0;
+                for(int i = 0; str[i] != '\0'; i++) {
+                    if(str[i] == '+') {
+                        found = 1;
+                        break;
+                    }
+                }
+                if(found) {
+                    printf("%s", str);
+                }
+            }
+
+            rewind(f);
+            printf("\n****  Subtraction History  ****\n\n");
+            while(fgets(str, sizeof(str), f) != NULL) {
+                int found = 0;
+                for(int i = 0; str[i] != '\0'; i++) {
+                    if(str[i] == '-') {
+                        found = 1;
+                        break;
+                    }
+                }
+                if(found) {
+                    printf("%s", str);
+                }
+            }
+
+            printf("\n*\n\n");
+            fclose(f);
+            continue;
+        }
+
+        printf("Enter value of A: ");
+        scanf("%d", &a);
+        printf("Enter value of B: ");
+        scanf("%d", &b);
+
+        time_t now = time(NULL);
+        char *date = ctime(&now);
+
+        FILE *f = fopen("db.txt", "a");
+
+        if(type == 1) {
+            c = a + b;
+            printf("*\n");
+            printf("%d + %d = %d\n", a, b, c);
+            printf("*\n\n");
+            fprintf(f, "%d + %d = %d >>>> %s", a, b, c, date);
+        }
+
+        if(type == 2) {
+            c = a - b;
+            printf("*\n");
+            printf("%d - %d = %d\n", a, b, c);
+            printf("*\n\n");
+            fprintf(f, "%d - %d = %d >>>> %s", a, b, c, date);
+        }
+
+        fclose(f);
+    }
+
+    return 0;
+}
